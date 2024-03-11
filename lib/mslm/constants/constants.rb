@@ -24,6 +24,7 @@ module Mslm
         request.content_type = 'application/json'
       elsif _method == 'GET'
         request = Net::HTTP::Get.new(uri.request_uri)
+        
       else
         return "Unsupported HTTP method: #{_method}"
       end
@@ -37,7 +38,7 @@ module Mslm
       elsif response_data.code.to_i == 200
         json_response = JSON.parse(response_data.body)
         response = [json_response["email"],json_response["username"],json_response["domain"],json_response["malformed"],json_response["suggestion"],json_response["status"],json_response["has_mailbox"],json_response["accept_all"],json_response["disposable"],json_response["free"],json_response["role"],json_response['mx']]
-        # puts "Response : #{response}"
+       
         return response 
       else
         return "HTTP #{response_data.code}: #{response_data.message}"

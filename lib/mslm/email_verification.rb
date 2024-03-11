@@ -26,7 +26,7 @@ module Mslm
             end
 
             t_url = Mslm::Constants.prepare_url(Mslm::EmailVerification::BASE_URL + 'api/sv/v1', qp, opt)
-            puts "Url #{t_url}"
+     
 
             sv_resp = Mslm::Constants.req_and_resp('GET', t_url, nil, opt)
             return sv_resp

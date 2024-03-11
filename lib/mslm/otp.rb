@@ -24,7 +24,7 @@ module Mslm
                 end
 
                 t_url = Mslm::Constants.prepare_url(Mslm::EmailVerification::BASE_URL + 'api/otp/v1/send', qp, opt)
-                puts "Url #{t_url}"
+                # puts "Url #{t_url}"
                 puts otp_send_req.to_json
 
                 otp_send_resp = Mslm::Constants.req_and_resp('POST', t_url, otp_send_req, opt)
@@ -43,7 +43,7 @@ module Mslm
                 end
 
                 t_url = Mslm::Constants.prepare_url(Mslm::EmailVerification::BASE_URL + 'api/otp/v1/token_verify', qp, opt)
-                puts "Url #{t_url}"
+                # puts "Url #{t_url}"
 
                 otp_token_verify_resp = Mslm::Constants.req_and_resp('POST', t_url, otp_token_verify_req, opt)
                 return otp_token_verify_resp
