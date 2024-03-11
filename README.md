@@ -69,7 +69,7 @@ otp_send_req = {
 otp_send_resp = otp.send_otp(otp_send_req)
 
 otp_verify_req = {
-"phone" => "+923004242293",
+"phone" => "+921123454456",
 "token" => "Recieved Token",
 "consume" => true,
 }
