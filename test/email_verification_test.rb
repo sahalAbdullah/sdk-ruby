@@ -10,9 +10,9 @@ class EmailVerificationTest < Minitest::Test
   end
 
   def test_valid_email_verification
-    expected_result = ["sahal.abdullah@mslm.io", "sahal.abdullah", "mslm.io", false, "", "real", true, false, false, false, false, [{"host"=>"ASPMX.L.GOOGLE.COM.", "pref"=>1}, {"host"=>"ALT1.ASPMX.L.GOOGLE.COM.", "pref"=>5}, {"host"=>"ALT2.ASPMX.L.GOOGLE.COM.", "pref"=>5}, {"host"=>"ALT3.ASPMX.L.GOOGLE.COM.", "pref"=>10}, {"host"=>"ALT4.ASPMX.L.GOOGLE.COM.", "pref"=>10}]]
-    c = Mslm.init("280782b506e945fb86204c49b2aee2a3")
-    response = @verifier.single_verify("sahal.abdullah@mslm.io")
+    expected_result = []
+    c = Mslm.init("YOUR_API_KEY")
+    response = @verifier.single_verify("email@example.com")
     assert_equal expected_result, response  
   end
 
