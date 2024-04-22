@@ -1,6 +1,6 @@
 require 'json'
 require 'uri'
-require 'net'
+require 'net/http'
 
 class Lib
 
@@ -65,16 +65,17 @@ class Lib
     @http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true if uri.scheme == 'https'
 
-    headers = { 'User-Agent' => opt.user_agent }
+    headers = { }
 
     if method.upcase == 'GET'
-
-      response = @http.get(t_url)
+      response = @http.get(uri.request_uri)
     elsif method.upcase == 'POST'
-
       headers['Content-Type'] = 'application/json'
-      json_data = data.to_json if data
-      response = @http.post(t_url, json_data, headers)
+
+      puts uri.request_uri
+      puts data
+
+      response = @http.post(uri.request_uri,data,headers)
     else
       raise ArgumentError, 'Invalid HTTP method. Supported methods are GET and POST.'
     end

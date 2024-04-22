@@ -15,7 +15,7 @@ class TestEmailVerification < Minitest::Test
 
     def test_single_verify_success
         (0...5).each do |_|
-            resp, _ = @email_verify.single_verify(TEST_EMAIL_1)
+            resp, _ = @email_verify.single_verify(TEST_EMAIL)
             assert_single_verify_success(resp)
         end
     end
