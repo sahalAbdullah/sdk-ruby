@@ -72,7 +72,7 @@ module Mslm
       single_verify_resp = SingleVerifyResp.new(email, username, domain, malformed, suggestion, status,
                                             has_mailbox, accept_all, disposable, free, role, mx)
 
-        
+      single_verify_resp 
     end
   end
 end
