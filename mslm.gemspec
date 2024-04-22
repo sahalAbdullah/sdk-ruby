@@ -20,10 +20,20 @@ Gem::Specification.new do |spec|
   spec.metadata["changelog_uri"] = "https://github.com/mslmio/sdk-ruby/blob/main/CHANGELOG.md"
 
 
+    excluded_files = [
+    "lib/mslm/constants/constants.rb",
+    "lib/mslm/email_verification.rb",
+    "sig/mslm.rbs",
+    "test/email_verification_test.rb",
+    "CODE_OF_CONDUCT.md"
+  ]
+
+
   spec.files = Dir.chdir(__dir__) do
     `git ls-files -z`.split("\x0").reject do |f|
       (File.expand_path(f) == __FILE__) ||
         f.start_with?(*%w[bin/ test/ spec/ features/ .git appveyor Gemfile])
+        excluded_files.include?(f)
     end
   end
   spec.bindir = "exe"

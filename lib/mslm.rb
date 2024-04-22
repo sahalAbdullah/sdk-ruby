@@ -1,14 +1,13 @@
-
-require_relative "mslm/email_verification"
-require_relative "mslm/otp"
-require_relative "mslm/version"
+require_relative './mslm/email_verify'
+# require_relative './mslm/otp'
 
 module Mslm
   class << self
-    attr_accessor :api_key
+    attr_reader :email_verify, :otp
 
-    def init(api_key = nil)
-      @api_key = api_key
+    def initialize(api_key)
+      @email_verify = EmailVerify.new(api_key)
+      # @otp = Otp.new(api_key)
     end
   end
 end
