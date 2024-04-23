@@ -11,7 +11,7 @@ class SingleVerifyRespMx
 
   # Returns a string representation of the SingleVerifyRespMx object.
   def to_s
-    "SingleVerifyRespMx{host='#{@host}', pref=#{@pref}}"
+    "{host='#{@host}', pref=#{@pref}}"
   end
 
   # Returns the host or domain name of the mail server.

@@ -9,7 +9,7 @@ class OtpResp
 
   # String representation of OtpResp object.
   def to_s
-    "OtpResp{code='#{@code}', message='#{@msg}'}"
+    "{code='#{@code}', message='#{@msg}'}"
   end
 end
 
@@ -17,7 +17,7 @@ class OtpSendResp < OtpResp
 
   # String representation of OtpSendResp object.
   def to_s
-    "OtpSendResp{code='#{@code}', message='#{@msg}'}"
+    "{code='#{@code}', message='#{@msg}'}"
   end
 end
 
@@ -25,6 +25,6 @@ class OtpTokenVerifyResp < OtpResp
     
   # String representation of OtpTokenVerifyResp object.
   def to_s
-    "OtpTokenVerifyResp{code='#{@code}', message='#{@msg}'}"
+    "{code='#{@code}', message='#{@msg}'}"
   end
 end

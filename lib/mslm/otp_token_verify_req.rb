@@ -1,11 +1,10 @@
-class OtpSendReq
-  attr_reader :phone, :tmpl_sms, :token_len, :expire_seconds
+class OtpTokenVerifyReq
+    attr_reader :phone, :token, :consume
 
-  # Constructor method to initialize OtpSendReq object.
-  def initialize(phone, tmpl_sms, token_len, expire_seconds)
-    @phone = phone
-    @tmpl_sms = tmpl_sms
-    @token_len = token_len
-    @expire_seconds = expire_seconds
-  end
+    # Constructor method to initialize OtpTokenVerifyReq object.
+    def initialize(phone, token, consume)
+        @phone = phone
+        @token = token
+        @consume = consume
+    end
 end

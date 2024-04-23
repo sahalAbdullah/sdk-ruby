@@ -25,7 +25,7 @@ class SingleVerifyResp
 
   # Returns a string representation of the SingleVerifyResp object.
   def to_s
-    "SingleVerifyResp{email='#{@email}', username='#{@username}', domain='#{@domain}', " \
+    "{email='#{@email}', username='#{@username}', domain='#{@domain}', " \
     "malformed=#{@malformed}, suggestion='#{@suggestion}', status='#{@status}', " \
     "has_mailbox=#{@has_mailbox}, accept_all=#{@accept_all}, disposable=#{@disposable}, " \
     "free=#{@free}, role=#{@role}, mx=#{@mx}}"

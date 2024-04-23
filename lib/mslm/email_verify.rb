@@ -5,8 +5,6 @@ require_relative 'lib'
 require_relative 'req_opts'
 require_relative 'mslm_errors'
 require_relative 'single_verify_resp'
-require_relative '../mslm'
-
 
 module Mslm
   class EmailVerify
@@ -66,8 +64,12 @@ module Mslm
       mx = resp_data['mx']
 
       status_code = resp.code.to_i
-      return nil, RequestQuotaExceededError.new if status_code == 429
-      return nil, MslmError.new(status_code, 'API request failed') if status_code != 200
+
+      if status_code == 429
+          return nil, RequestQuotaExceededError.new 
+      elsif status_code != 200
+          return nil, MslmError.new(status_code, 'API request failed')
+      end
 
       single_verify_resp = SingleVerifyResp.new(email, username, domain, malformed, suggestion, status,
                                             has_mailbox, accept_all, disposable, free, role, mx)

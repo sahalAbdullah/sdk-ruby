@@ -37,7 +37,7 @@ class Lib
 
   # Static method to generate a user agent string.
   def self.get_user_agent(pkg)
-    "#{pkg}/ruby/1.0.0"
+    "#{pkg}/ruby/2.2.1"
   end
 
   # Prepares the URL for making a request.
@@ -64,17 +64,12 @@ class Lib
     uri = URI.parse(t_url)
     @http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true if uri.scheme == 'https'
-
-    headers = { }
+    headers = {}
 
     if method.upcase == 'GET'
       response = @http.get(uri.request_uri)
     elsif method.upcase == 'POST'
       headers['Content-Type'] = 'application/json'
-
-      puts uri.request_uri
-      puts data
-
       response = @http.post(uri.request_uri,data,headers)
     else
       raise ArgumentError, 'Invalid HTTP method. Supported methods are GET and POST.'
