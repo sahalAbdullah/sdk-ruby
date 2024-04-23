@@ -52,7 +52,7 @@ otp_send_response = otp.send(otp_send_req)
 ```ruby
 # Create an OtpTokenVerifyReq object.
 otp_token_verify_request = {
-    "phone" => "+923004242293",
+    "phone" => "+923214444444",
     "token" => "123456",
     "consume" => True,
 }
