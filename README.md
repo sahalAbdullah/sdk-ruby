@@ -57,7 +57,7 @@ otp_token_verify_request = {
     "consume" => True,
 }
 
-otp_token_verify_response, error = otp.verify(otp_token_verify_request)
+otp_token_verify_response = otp.verify(otp_token_verify_request)
 ```
 
 #### Email Verify
