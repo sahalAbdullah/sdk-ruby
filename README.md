@@ -22,6 +22,13 @@ To install the main library, use the following command:
 gem install mslm
 ```
 
+## Usage
+
+```ruby
+require 'mslm'
+
+```
+
 #### Email Verify
 
 - Single Verify
