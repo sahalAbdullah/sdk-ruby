@@ -12,8 +12,8 @@ class TestEmailVerification < Minitest::Test
     end
 
     def test_email_verify_sv_fake
-            resp, _ = @email_verify.single_verify(TEST_EMAIL_REAL)
-            assert_email_verify_sv_REAL(resp)
+        resp, _ = @email_verify.single_verify(TEST_EMAIL_REAL)
+        assert_email_verify_sv_REAL(resp)
     end
 
     def assert_email_verify_sv_REAL(resp)
@@ -32,8 +32,8 @@ class TestEmailVerification < Minitest::Test
     end
 
     def test_email_verify_sv_fake
-            resp, _ = @email_verify.single_verify(TEST_EMAIL_FAKE)
-            assert_email_verify_sv_fake(resp)
+        resp, _ = @email_verify.single_verify(TEST_EMAIL_FAKE)
+        assert_email_verify_sv_fake(resp)
     end
 
     def assert_email_verify_sv_fake(resp)
@@ -58,8 +58,8 @@ class TestEmailVerification < Minitest::Test
     end
 
     def test_email_verify_sv_disposable
-            resp, _ = @email_verify.single_verify(TEST_EMAIL_DISPOSABLE)
-            assert_email_verify_sv_disposable(resp)
+        resp, _ = @email_verify.single_verify(TEST_EMAIL_DISPOSABLE)
+        assert_email_verify_sv_disposable(resp)
     end
 
     def assert_email_verify_sv_disposable(resp)

@@ -9,7 +9,6 @@ require_relative 'otp_token_verify_req'
 module Mslm
 
     class Otp
-
         # Class for performing otp using an API.
         attr_reader :lib
 
