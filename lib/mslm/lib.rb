@@ -1,6 +1,7 @@
-require 'json'
 require 'uri'
 require 'net/http'
+require_relative 'version'
+require_relative '../mslm'
 
 class Lib
     # Generic utility class for handling HTTP requests and responses.
@@ -10,7 +11,7 @@ class Lib
     def initialize(api_key = "")
         @api_key = api_key
         @http = nil
-        @base_url = URI.parse('https://mslm.io')
+        @base_url = URI.parse(Mslm::Mslm::BASE_URL)
         @user_agent = self.class.get_user_agent('mslm')
     end
 
@@ -36,35 +37,36 @@ class Lib
 
     # Static method to generate a user agent string.
     def self.get_user_agent(pkg)
-        "#{pkg}/ruby/2.2.1"
+        "#{pkg}/ruby/#{Mslm::VERSION}"
     end
 
     # Prepares the URL for making a request.
-    def prepare_url(url_path, qp, opt)
-        qp['apikey'] = opt.api_key
+    def prepare_url(url_path, query_params, opt)
+        query_params['apikey'] = opt.api_key
 
-        t_url = @base_url.dup
-        t_url.path = url_path
+        target_url = @base_url.dup
+        target_url.path = url_path
+        query_params_str = URI.encode_www_form(query_params)
 
-        qp_str = URI.encode_www_form(qp)
-        t_url.query = if t_url.query
-                        "#{t_url.query}&#{qp_str}"
+        target_url.query = if target_url.query
+                        "#{target_url.query}&#{query_params_str}"
                     else
-                        qp_str
+                        query_params_str
                     end
-
-        t_url
+        target_url
     end
 
     # Makes an HTTP request and returns the response.
-    def req_and_resp(t_url, opt, method = 'GET', data = nil)
-        uri = URI.parse(t_url)
+    def req_and_resp(target_url, opt, method = 'GET', data = nil)
+        uri = URI.parse(target_url)
         @http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = true if uri.scheme == 'https'
-        headers = {}
-
+        headers = {
+            'User-Agent' => @user_agent,
+        }
+        
         if method.upcase == 'GET'
-        response = @http.get(uri.request_uri)
+        response = @http.get(uri.request_uri,headers)
         elsif method.upcase == 'POST'
         headers['Content-Type'] = 'application/json'
         response = @http.post(uri.request_uri,data,headers)

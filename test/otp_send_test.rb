@@ -5,7 +5,7 @@ class TestOtp < Minitest::Test
 
     def setup
         @api_key = 'api_key'
-        @otp = Mslm::Otp.new(@api_key)
+        @otp = Mslm::Mslm.new(@api_key)
         @phone_number = '+923214444444'
     end
 
@@ -17,7 +17,7 @@ class TestOtp < Minitest::Test
             "expire_seconds" => 300,
         }
 
-        otp_send_resp = @otp.send(otp_send_req)
+        otp_send_resp = @otp.send_otp(otp_send_req)
         
         assert_equal(1000, otp_send_resp.code)
         assert_equal("Successfully sent SMS.", otp_send_resp.msg)

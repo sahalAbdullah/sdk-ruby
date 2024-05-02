@@ -1,12 +1,12 @@
 require 'uri'
-require 'net/http'
+require_relative '../mslm'
 
 class ReqOpts
     # Request options class for configuring HTTP requests.
     attr_accessor :api_key, :http, :base_url, :user_agent
 
     # Initializes a ReqOpts object with default or provided values.
-    def initialize(api_key: "", http: nil, base_url: "https://mslm.io", user_agent: "mslm")
+    def initialize(api_key: "", http: nil, base_url: Mslm::Mslm::BASE_URL, user_agent: "mslm")
         @api_key = api_key
         @http = http
         @base_url = URI.parse(base_url)

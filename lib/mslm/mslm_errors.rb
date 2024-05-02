@@ -1,5 +1,3 @@
-
-# Base class for errors     
 class MslmError < StandardError
     attr_reader :code, :message
 
@@ -10,7 +8,7 @@ class MslmError < StandardError
     end
 
     # Returns a string representation of the error
-    def to_s
+    def to_str
         "Error: code: #{@code}, message: #{@message}"
     end
 end

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Mslm
-    VERSION = "2.2.2"
+    VERSION = "2.2.5"
 end

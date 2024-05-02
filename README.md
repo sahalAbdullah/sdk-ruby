@@ -1,12 +1,14 @@
 # Mslm Ruby SDK
 
-The official Ruby SDK for Mslm APIs.
+# [<img src="https://avatars.githubusercontent.com/u/50307970?s=200&v=4" alt="Mslm" width="24"/>](https://mslm.io/) IPinfo Ruby Client Library
+
+The official Ruby SDK for Mslm APIs [Mslm.io](https://mslm.io) that enables you to verify email addresses and perform other actions related to email verification, sending and verifying otp.
 
 ## Requirements
 
 Before you start using the Mslm Ruby SDK, ensure that you have the following:
 
-- **Ruby:** The SDK is compatible with Ruby 2.5 and above.
+- **Ruby:** The SDK is compatible with Ruby version >= 3.0.0.
 
 ## Authentication
 
@@ -27,6 +29,8 @@ gem install mslm
 ```ruby
 require 'mslm'
 
+# Initialize the Mslm object with your API key.
+client = Mslm::Mslm.new('api_key')
 ```
 
 #### Email Verify
@@ -34,7 +38,14 @@ require 'mslm'
 - Single Verify
 
 ```ruby
-  resp = email_verify.single_verify("support@mslm.io")
+    response = client.verify_email("fakefake@mslm.io")
+
+    response.status       //fake
+    response.domain       //mslm.io
+    response.malformed    //false
+    response.has_mailbox  //false
+    response.disposable   //false
+
 ```
 
 #### OTP
@@ -42,45 +53,33 @@ require 'mslm'
 - Sending an OTP.
 
 ```ruby
-# Create an OtpSendReq object.
-otp_send_req = {
-    "phone" => "+923214444444",
-    "tmpl_sms" => "Your verification code is {token}",
-    "token_len" => 4,
-    "expire_seconds" => 300,
-}
+    otp_send_req = {
+        "phone" => "+923214444444",
+        "tmpl_sms" => "Your verification code is {token}",
+        "token_len" => 4,
+        "expire_seconds" => 300,
+    }
 
-otp_send_response = otp.send(otp_send_req)
+    response = client.send_otp(otp_send_req)
+
+    response.code   //1000
+    respnse.msg     //Successfully sent SMS.
 
 ```
 
 - Verifying a token.
 
 ```ruby
-# Create an OtpTokenVerifyReq object.
-otp_token_verify_request = {
-    "phone" => "+923214444444",
-    "token" => "123456",
-    "consume" => True,
-}
+    otp_token_verify_request = {
+        "phone" => "+923214444444",
+        "token" => "123456",
+        "consume" => True,
+    }
 
-otp_token_verify_response = otp.verify(otp_token_verify_request)
-```
+    otp_verify_resp = client.verify_otp(otp_verify_req)
 
-#### Email Verify
-
-```ruby
-
-# Initialize the EmailVerify object with your API key.
-mslm_email_verify_instance = Mslm::EmailVerify.new('api_key')
-```
-
-#### OTP
-
-```ruby
-
-# Initialize the Otp object with your API key.
-mslm_otp_instance = Mslm::Otp.new('api_key')
+    response.code   //1000
+    response.msg    //Successfully verified.
 ```
 
 ### Error Handling

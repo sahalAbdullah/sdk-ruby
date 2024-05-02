@@ -8,11 +8,11 @@ class TestEmailVerification < Minitest::Test
 
     def setup
         @api_key = 'api_key'
-        @email_verify = Mslm::EmailVerify.new(@api_key)
+        @email_verify = Mslm::Mslm.new(@api_key)
     end
 
     def test_email_verify_sv_fake
-        resp, _ = @email_verify.single_verify(TEST_EMAIL_REAL)
+        resp, _ = @email_verify.verify_email(TEST_EMAIL_REAL)
         assert_email_verify_sv_REAL(resp)
     end
 
@@ -32,7 +32,7 @@ class TestEmailVerification < Minitest::Test
     end
 
     def test_email_verify_sv_fake
-        resp, _ = @email_verify.single_verify(TEST_EMAIL_FAKE)
+        resp, _ = @email_verify.verify_email(TEST_EMAIL_FAKE)
         assert_email_verify_sv_fake(resp)
     end
 
@@ -50,15 +50,15 @@ class TestEmailVerification < Minitest::Test
         assert_equal(resp.role, false)
         assert_equal(resp.mx, [
                     {"host"=>"ASPMX.L.GOOGLE.COM.", "pref"=>1}, 
-                    {"host"=>"ALT1.ASPMX.L.GOOGLE.COM.", "pref"=>5}, 
                     {"host"=>"ALT2.ASPMX.L.GOOGLE.COM.", "pref"=>5}, 
-                    {"host"=>"ALT3.ASPMX.L.GOOGLE.COM.", "pref"=>10}, 
-                    {"host"=>"ALT4.ASPMX.L.GOOGLE.COM.", "pref"=>10}
-    ])
+                    {"host"=>"ALT1.ASPMX.L.GOOGLE.COM.", "pref"=>5}, 
+                    {"host"=>"ALT4.ASPMX.L.GOOGLE.COM.", "pref"=>10}, 
+                    {"host"=>"ALT3.ASPMX.L.GOOGLE.COM.", "pref"=>10}
+        ])
     end
 
     def test_email_verify_sv_disposable
-        resp, _ = @email_verify.single_verify(TEST_EMAIL_DISPOSABLE)
+        resp, _ = @email_verify.verify_email(TEST_EMAIL_DISPOSABLE)
         assert_email_verify_sv_disposable(resp)
     end
 
@@ -77,5 +77,6 @@ class TestEmailVerification < Minitest::Test
         assert_equal(resp.mx, [{"host"=>"mx.yandex.net.", "pref"=>10}])
     end
 end
+
 
 
