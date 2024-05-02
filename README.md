@@ -1,6 +1,6 @@
 # Mslm Ruby SDK
 
-# [<img src="https://avatars.githubusercontent.com/u/50307970?s=200&v=4" alt="Mslm" width="24"/>](https://mslm.io/) IPinfo Ruby Client Library
+# [<img src="https://avatars.githubusercontent.com/u/50307970?s=200&v=4" alt="Mslm" width="24"/>](https://mslm.io/)
 
 The official Ruby SDK for Mslm APIs [Mslm.io](https://mslm.io) that enables you to verify email addresses and perform other actions related to email verification, sending and verifying otp.
 
