@@ -2,7 +2,6 @@ require 'minitest/autorun'
 require_relative '../lib/mslm'
 
 class TestOtp < Minitest::Test
-
     def setup
         @api_key = 'api_key'
         @otp = Mslm::Mslm.new(@api_key)
