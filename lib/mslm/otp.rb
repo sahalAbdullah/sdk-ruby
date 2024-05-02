@@ -41,7 +41,6 @@ class Otp
             'token_len' => otp_req['token_len'],
             'expire_seconds' => otp_req['expire_seconds']
         }
-
         target_url = @lib.prepare_url('/api/otp/v1/send', {}, opt)
 
         resp = @lib.req_and_resp(target_url, opt, 'POST', query_params.to_json)
@@ -63,7 +62,6 @@ class Otp
             'token' => otp_token_req["token"],
             'consume' => otp_token_req["consume"]
         }
-
         target_url = @lib.prepare_url('/api/otp/v1/token_verify', {}, opt)
 
         resp = @lib.req_and_resp(target_url, opt, 'POST', query_params.to_json)

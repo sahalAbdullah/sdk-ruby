@@ -66,12 +66,12 @@ class Lib
         }
         
         if method.upcase == 'GET'
-        response = @http.get(uri.request_uri,headers)
+            response = @http.get(uri.request_uri,headers)
         elsif method.upcase == 'POST'
-        headers['Content-Type'] = 'application/json'
-        response = @http.post(uri.request_uri,data,headers)
+            headers['Content-Type'] = 'application/json'
+            response = @http.post(uri.request_uri,data,headers)
         else
-        raise ArgumentError, 'Invalid HTTP method. Supported methods are GET and POST.'
+            raise ArgumentError, 'Invalid HTTP method. Supported methods are GET and POST.'
         end
 
         response

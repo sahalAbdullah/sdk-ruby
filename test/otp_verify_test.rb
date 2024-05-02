@@ -10,13 +10,11 @@ class TestOtp < Minitest::Test
 
     def test_otp_verify_success
         otp_code = '9842'
-        
         otp_verify_req = {
             "phone" => @phone_number,
             "token" => otp_code,
             "consume" => true,
         }
-
         otp_verify_resp = @otp.verify_otp(otp_verify_req)
         
         assert_equal(1000, otp_verify_resp.code)

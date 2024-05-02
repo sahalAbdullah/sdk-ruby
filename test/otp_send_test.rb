@@ -15,7 +15,6 @@ class TestOtp < Minitest::Test
             "token_len" => 4,
             "expire_seconds" => 300,
         }
-
         otp_send_resp = @otp.send_otp(otp_send_req)
         
         assert_equal(1000, otp_send_resp.code)
